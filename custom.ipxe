@@ -25,7 +25,7 @@ boot || goto custom_exit
 
 :option_two
 kernel http://158.101.198.79:8000/pxeboot/linux26
-initrd http://158.101.198.79:8000/pxeboot/initrd.iso.img
+initrd http://158.101.198.79:8000/pxeboot/initrd.iso.img vga=791 video=vesafb:ywrap,mtrr ramdisk_size=16777216 rw quiet initrd=initrd.iso.img
 boot || goto custom_exit
 
 :option_three
