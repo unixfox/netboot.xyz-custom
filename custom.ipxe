@@ -24,8 +24,11 @@ imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
 :option_two
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://download.proxmox.com/iso/proxmox-ve_6.3-1.iso
+set serverip http://158.101.198.79:8000 //Modify this to match the ip adress or domain of your webserver
+set opts "vga=791 video=vesafb:ywrap,mtrr ramdisk_size=16777216 rw quiet initrd=initrd.iso.img"
+set kernel "${webserver}/pxeboot/linux26 ${opts} splash=verbose proxdebug"
+initrd ${webserver}/pxeboot/initrd.iso.img
+chain ${kernel}
 boot || goto custom_exit
 
 :option_three
