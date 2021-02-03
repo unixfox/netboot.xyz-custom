@@ -24,10 +24,8 @@ imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
 :option_two
-set opts "vga=791 video=vesafb:ywrap,mtrr ramdisk_size=16777216 rw quiet initrd=initrd.iso.img"
-set kernel "http://158.101.198.79:8000/pxeboot/linux26 ${opts} splash=verbose proxdebug"
 initrd http://158.101.198.79:8000/pxeboot/initrd.iso.img
-chain ${kernel}
+kernel http://158.101.198.79:8000/pxeboot/linux26
 boot || goto custom_exit
 
 :option_three
